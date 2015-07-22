@@ -23,7 +23,7 @@ class TabBarController: UITabBarController, PFLogInViewControllerDelegate, PFSig
         if PFUser.currentUser() == nil {
             var loginCtrl = PFLogInViewController()
             loginCtrl.fields = PFLogInFields.Facebook
-            loginCtrl.facebookPermissions = ["public_profile", "email", "user_friends"]
+            //loginCtrl.facebookPermissions = ["public_profile", "email", "user_friends"]
             //loginCtrl.facebookPermissions = ["friends_about_me"]
             loginCtrl.delegate = self
             
@@ -32,11 +32,15 @@ class TabBarController: UITabBarController, PFLogInViewControllerDelegate, PFSig
             
             loginCtrl.logInView!.logo = logInLogoTitle
             
+            var signupCtrl = PFSignUpViewController()
+            signupCtrl.delegate = self
+            loginCtrl.signUpController = signupCtrl
+            
             self.presentViewController(loginCtrl, animated: true, completion: nil)
             
         }        
     }
-    
+    /*
     func getFBData(user: PFUser!){
         FBRequestConnection.startForMeWithCompletionHandler({connection, result, error in
             if (error != nil) {
