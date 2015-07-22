@@ -35,6 +35,7 @@
 		1F4160671B5EEA4300BB3E05 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F4160661B5EEA4300BB3E05 /* FBSDKCoreKit.framework */; };
 		1F4160691B5EEA6000BB3E05 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F4160681B5EEA6000BB3E05 /* FBSDKLoginKit.framework */; };
 		1F41606B1B5EEA8900BB3E05 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F41606A1B5EEA8900BB3E05 /* FBSDKShareKit.framework */; };
+		1FBED0701B600A3300BED450 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBED06F1B600A3300BED450 /* CreateGroupViewController.swift */; };
 		33DE45971B5FF07600EB51FD /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE45961B5FF07600EB51FD /* GroupTableViewController.swift */; };
 		33DE45991B5FF0C800EB51FD /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE45981B5FF0C800EB51FD /* GroupViewController.swift */; };
 /* End PBXBuildFile section */
@@ -83,6 +84,7 @@
 		1F4160681B5EEA6000BB3E05 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		1F41606A1B5EEA8900BB3E05 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		1F41606C1B5EEB4500BB3E05 /* whosin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "whosin-Bridging-Header.h"; sourceTree = "<group>"; };
+		1FBED06F1B600A3300BED450 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		33DE45961B5FF07600EB51FD /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
 		33DE45981B5FF0C800EB51FD /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,6 +153,7 @@
 				1F4160211B5EE63C00BB3E05 /* FirstViewController.swift */,
 				1F4160231B5EE63C00BB3E05 /* SecondViewController.swift */,
 				1F4160251B5EE63C00BB3E05 /* Main.storyboard */,
+				1FBED06F1B600A3300BED450 /* CreateGroupViewController.swift */,
 				33DE45981B5FF0C800EB51FD /* GroupViewController.swift */,
 				33DE45961B5FF07600EB51FD /* GroupTableViewController.swift */,
 				1F4160281B5EE63D00BB3E05 /* Images.xcassets */,
@@ -315,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33DE45991B5FF0C800EB51FD /* GroupViewController.swift in Sources */,
+				1FBED0701B600A3300BED450 /* CreateGroupViewController.swift in Sources */,
 				1F4160241B5EE63C00BB3E05 /* SecondViewController.swift in Sources */,
 				33DE45971B5FF07600EB51FD /* GroupTableViewController.swift in Sources */,
 				1F4160201B5EE63C00BB3E05 /* AppDelegate.swift in Sources */,

@@ -22,6 +22,18 @@ class GroupViewController: UIViewController {
     }
     
 
+    @IBOutlet weak var passwortField: UITextField!
+    @IBOutlet weak var passwordLabel: UILabel!
+
+    @IBOutlet weak var privateSwitch: UISwitch!
+
+    @IBAction func clickPrivate(sender: UIButton) {
+        if privateSwitch.on {
+            println("private")
+        } else {
+            println("public")
+        }
+    }
     /*
     // MARK: - Navigation
 
