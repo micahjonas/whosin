@@ -23,7 +23,8 @@ class TabBarController: UITabBarController, PFLogInViewControllerDelegate, PFSig
         if PFUser.currentUser() == nil {
             var loginCtrl = PFLogInViewController()
             loginCtrl.fields = PFLogInFields.Facebook
-            loginCtrl.facebookPermissions = ["friends_about_me"]
+            loginCtrl.facebookPermissions = ["public_profile", "email", "user_friends"]
+            //loginCtrl.facebookPermissions = ["friends_about_me"]
             loginCtrl.delegate = self
             
             var logInLogoTitle = UILabel()
@@ -31,12 +32,40 @@ class TabBarController: UITabBarController, PFLogInViewControllerDelegate, PFSig
             
             loginCtrl.logInView!.logo = logInLogoTitle
             
-            var signupCtrl = PFSignUpViewController()
-            signupCtrl.delegate = self
-            loginCtrl.signUpController = signupCtrl
-            
             self.presentViewController(loginCtrl, animated: true, completion: nil)
+            
         }        
+    }
+    
+    func getFBData(user: PFUser!){
+        FBRequestConnection.startForMeWithCompletionHandler({connection, result, error in
+            if (error != nil) {
+                println(result)
+            }else {
+                println("Error")
+            }
+        })
+    }
+    
+    func getUserInfo() {
+        
+        if let session = PFFacebookUtils.session() {
+            if session.isOpen {
+                println("session is open")
+                FBRequestConnection.startForMeWithCompletionHandler({
+                    (connection: FBRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
+                    //println("done me request")
+                    if error != nil { println("facebook me request - error is not nil :(") }
+                    else { println("facebook me request - error is nil :) ")
+                        let urlUserImg = "http://graph.facebook.com/\(result.objectID)/picture?type=large"
+                        let firstName = result.first_name
+                        let lastName = result.last_name }
+                })
+            }
+        } else {
+            //let user:PFUser = PFUser.currentUser()
+            //println("ohooo \(user)")
+        }
     }
 
 
