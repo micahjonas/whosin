@@ -44,7 +44,7 @@ class TabBarController: UITabBarController, PFLogInViewControllerDelegate, PFSig
         
         var user = PFUser.currentUser()
         
-        println(FBSDKAccessToken.currentAccessToken().userID)
+        //println(FBSDKAccessToken.currentAccessToken().userID)
         
         println(user)
 

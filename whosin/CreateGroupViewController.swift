@@ -65,12 +65,19 @@ class CreateGroupViewController: UIViewController {
             group.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
                 println("Object has been saved")
                 
+                let relation = PFUser.currentUser()?.relationForKey("groups")
+                
+                relation?.addObject(group)
+                
+                PFUser.currentUser()?.saveInBackground()
+                
+                /*
                 let groupUser = PFObject(className: "group_user")
                 groupUser["groupId"] = group.objectId
                 groupUser["userId"] = PFUser.currentUser()?.objectId
                 groupUser.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
                     println("fuck yes")
-                }
+                }*/
                 
             }
 
@@ -95,14 +102,27 @@ class CreateGroupViewController: UIViewController {
                     group.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
                         println("Object has been saved")
                         
+                        let relation = PFUser.currentUser()?.relationForKey("groups")
+                        
+                        relation?.addObject(group)
+
+                        PFUser.currentUser()?.saveInBackground()
+
+                        
+                        
+                        /*
+                        // Fake relation
                         let groupUser = PFObject(className: "group_user")
                         groupUser["groupId"] = group.objectId
                         groupUser["userId"] = PFUser.currentUser()?.objectId
+                        
+                        
+                        
                         groupUser.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
                             println("fuck yes")
-                        
+
                         }
-                        
+                        */
                     }
                 }
             })

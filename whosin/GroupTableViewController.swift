@@ -30,7 +30,10 @@ class GroupTableViewController: PFQueryTableViewController {
     // Define the query that will provide the data for the table view
     override func queryForTable() -> PFQuery {
         //var userId : String = PFUser.currentUser()!.objectId!
-        var query = PFQuery(className: "group_user")
+        
+        
+        let relation = PFUser.currentUser()?.relationForKey("groups")
+        let query = relation?.query()
         
         /*
         query.whereKey("userId", equalTo: userId)
@@ -54,10 +57,8 @@ class GroupTableViewController: PFQueryTableViewController {
         
         */
         
-        
-        
-        query.orderByAscending("name")
-        return query
+        println(query)
+        return query!
     }
 
 
@@ -70,25 +71,38 @@ class GroupTableViewController: PFQueryTableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.loadObjects()
+        self.tableView.reloadData()
+        
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // Override to support editing the table view.
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            
+            let relation = PFUser.currentUser()?.relationForKey("groups")
+            var temp = objects![indexPath.row] as? PFObject
+            relation?.removeObject(temp!)
+            PFUser.currentUser()?.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                self.loadObjects()
+                self.tableView.reloadData()
+            }
+            
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
 
     // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
-    }
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
