@@ -7,8 +7,59 @@
 //
 
 import UIKit
+import Parse
+import ParseUI
 
-class GroupTableViewController: UITableViewController {
+class GroupTableViewController: PFQueryTableViewController {
+    
+    // Initialise the PFQueryTable tableview
+    override init(style: UITableViewStyle, className: String!) {
+        super.init(style: style, className: className)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        // Configure the PFQueryTableView
+        self.parseClassName = "group"
+        self.textKey = "name"
+        self.pullToRefreshEnabled = true
+        self.paginationEnabled = false
+    }
+    
+    // Define the query that will provide the data for the table view
+    override func queryForTable() -> PFQuery {
+        //var userId : String = PFUser.currentUser()!.objectId!
+        var query = PFQuery(className: "group_user")
+        
+        /*
+        query.whereKey("userId", equalTo: userId)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            var groups : [String]
+            if error == nil {
+                // The find succeeded.
+                println("Successfully retrieved \(objects!.count) scores.")
+                // Do something with the found objects
+                if let objects = objects as? [PFObject] {
+                    for object in objects {
+                            
+                    }
+                }
+            } else {
+                // Log details of the failure
+                println("Error: \(error!) \(error!.userInfo!)")
+            }
+        }
+        
+        */
+        
+        
+        
+        query.orderByAscending("name")
+        return query
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
