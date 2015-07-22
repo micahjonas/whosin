@@ -458,6 +458,9 @@
                                 <state key="normal" title="Search">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="search:" destination="1KO-nV-3BM" eventType="touchUpInside" id="s2r-2I-jbD"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dmJ-CK-9Mr">
                                 <rect key="frame" x="16" y="294" width="568" height="256"/>
@@ -550,6 +553,7 @@
                         <outlet property="passwordLabel" destination="V0e-ee-UUP" id="3zZ-xm-w9V"/>
                         <outlet property="passwortField" destination="DOZ-iH-v9h" id="1iW-J6-iSh"/>
                         <outlet property="privateSwitch" destination="50T-ek-Qxb" id="9qA-JD-xVX"/>
+                        <outlet property="resultTable" destination="dmJ-CK-9Mr" id="GhC-5A-APw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZyM-db-0zE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -769,7 +773,7 @@
         <image name="first" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HGn-71-Qh7"/>
+        <segue reference="IHn-ke-Xmu"/>
         <segue reference="wIb-xq-JT1"/>
     </inferredMetricsTieBreakers>
 </document>
