@@ -36,7 +36,7 @@ class TabBarController: UITabBarController, PFLogInViewControllerDelegate, PFSig
             
         }        
     }
-    
+    /*
     func getFBData(user: PFUser!){
         FBRequestConnection.startForMeWithCompletionHandler({connection, result, error in
             if (error != nil) {
@@ -66,7 +66,7 @@ class TabBarController: UITabBarController, PFLogInViewControllerDelegate, PFSig
             //let user:PFUser = PFUser.currentUser()
             //println("ohooo \(user)")
         }
-    }
+    }*/
 
 
     override func didReceiveMemoryWarning() {
