@@ -36,9 +36,30 @@ class TabBarController: UITabBarController, PFLogInViewControllerDelegate, PFSig
             signupCtrl.delegate = self
             loginCtrl.signUpController = signupCtrl
             
+            
+            
             self.presentViewController(loginCtrl, animated: true, completion: nil)
             
-        }        
+        }
+        
+        //var findUsers:PFQuery = PFUser.query()!;
+        //findUsers.whereKey("username",  equalTo: searchText.text)
+        
+        var user = PFUser.currentUser()
+        
+        println(FBSDKAccessToken.currentAccessToken().userID)
+        
+        FBSDKAccessToken.currentAccessToken().self()
+        /*
+        FBRequestConnection.startForMeWithCompletionHandler { connection, result, error in
+            if (!error) {
+                let facebookId = result["id"]
+                // use facebookID
+            }
+        }*/
+        
+        println(user)
+
     }
     /*
     func getFBData(user: PFUser!){
@@ -70,7 +91,7 @@ class TabBarController: UITabBarController, PFLogInViewControllerDelegate, PFSig
             //let user:PFUser = PFUser.currentUser()
             //println("ohooo \(user)")
         }
-    }
+    }*/
 
 
     override func didReceiveMemoryWarning() {
