@@ -42,56 +42,13 @@ class TabBarController: UITabBarController, PFLogInViewControllerDelegate, PFSig
             
         }
         
-        //var findUsers:PFQuery = PFUser.query()!;
-        //findUsers.whereKey("username",  equalTo: searchText.text)
-        
         var user = PFUser.currentUser()
         
         println(FBSDKAccessToken.currentAccessToken().userID)
         
-        FBSDKAccessToken.currentAccessToken().self()
-        /*
-        FBRequestConnection.startForMeWithCompletionHandler { connection, result, error in
-            if (!error) {
-                let facebookId = result["id"]
-                // use facebookID
-            }
-        }*/
-        
         println(user)
 
     }
-    /*
-    func getFBData(user: PFUser!){
-        FBRequestConnection.startForMeWithCompletionHandler({connection, result, error in
-            if (error != nil) {
-                println(result)
-            }else {
-                println("Error")
-            }
-        })
-    }
-    
-    func getUserInfo() {
-        
-        if let session = PFFacebookUtils.session() {
-            if session.isOpen {
-                println("session is open")
-                FBRequestConnection.startForMeWithCompletionHandler({
-                    (connection: FBRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
-                    //println("done me request")
-                    if error != nil { println("facebook me request - error is not nil :(") }
-                    else { println("facebook me request - error is nil :) ")
-                        let urlUserImg = "http://graph.facebook.com/\(result.objectID)/picture?type=large"
-                        let firstName = result.first_name
-                        let lastName = result.last_name }
-                })
-            }
-        } else {
-            //let user:PFUser = PFUser.currentUser()
-            //println("ohooo \(user)")
-        }
-    }*/
 
 
     override func didReceiveMemoryWarning() {
