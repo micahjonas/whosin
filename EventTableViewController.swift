@@ -83,26 +83,36 @@ class EventTableViewController: PFQueryTableViewController {
             return query
         }
 
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        /*if (segue.identifier == "btnSubmitSegue") {
+            var svc = segue.destinationViewController as SecondViewController;
+            svc.dataPassed = fieldA.text
+            svc.secondDataPassed = fieldB.text
+        }*/
+        
         
         if segue.identifier == "eventSegue" {
             
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 println(indexPath.row)
                 let object = objects![indexPath.row] as! PFObject
-                println("fuck yeah")
+
                 
                 var index = indexPath.row
-                var event : AnyObject
-                if let eventObject = self.objects?[index]{
-                    event = eventObject as! AnyObject
-                } else {
-                    println("fts")
-                    event = ""
-                }
-                
+                var event : PFObject = self.objects?[index] as! PFObject
+                println("fuck yeah")
                 println(event)
                 
+                /*
+                var passDestination = segue.destinationViewController as! DetailEventViewController;
+
+                passDestination.date = event.stringForKey("date")
+                passDestination.group = event.stringForKey("groups")
+                passDestination.desc = event.stringForKey("description")
+                passDestination.location = event.stringForKey("location")
+                */
                 //println(event)
                 
                 
@@ -114,7 +124,13 @@ class EventTableViewController: PFQueryTableViewController {
                 mobileUrl = mobileUrl?.stringByReplacingOccurrencesOfString("www.last.fm", withString: "m.last.fm")
                 */
                 (segue.destinationViewController as? DetailEventViewController)?.title = "Details"
-                (segue.destinationViewController as? DetailEventViewController)?.event = event
+                (segue.destinationViewController as? DetailEventViewController)?.time = event.objectForKey("time") as! String
+                (segue.destinationViewController as? DetailEventViewController)?.date = (event.objectForKey("date") as! String)
+                (segue.destinationViewController as? DetailEventViewController)?.group = (event.objectForKey("groups") as! String)
+                (segue.destinationViewController as? DetailEventViewController)?.desc = (event.objectForKey("description") as! String)
+                (segue.destinationViewController as? DetailEventViewController)?.location = (event.objectForKey("location") as! String)
+
+
             }
         }
     }
