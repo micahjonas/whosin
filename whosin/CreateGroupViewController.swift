@@ -27,15 +27,20 @@ class CreateGroupViewController: UIViewController {
     @IBOutlet weak var privateSwitch: UISwitch!
     @IBAction func clickPrivate(sender: UISwitch) {
         if privateSwitch.on {
-            keywordLabel.hidden = false
+            keywordLabel.text = "keyword"
+            
+           /*keywordLabel.hidden = false
             keywordInput.hidden = false
             locationField.hidden = true
-            locationLabel.hidden = true
+            locationLabel.hidden = true*/
         } else {
-            keywordLabel.hidden = true
+            keywordLabel.text = "Location"
+            
+            
+            /*keywordLabel.hidden = true
             keywordInput.hidden = true
             locationField.hidden = false
-            locationLabel.hidden = false
+            locationLabel.hidden = false*/
         }
     }
     
