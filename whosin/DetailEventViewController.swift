@@ -18,35 +18,34 @@ class DetailEventViewController: UIViewController {
     @IBOutlet weak var lblGroup: UILabel!
     @IBOutlet weak var txtDescription: UITextView!
     @IBOutlet weak var lblPplGoing: UILabel!
-    
-    
-    /*func queryForTable() -> PFQuery{
-        let query = PFQuery(className: "eventDetails")
-        return query
-        
-    }
-    var details : PFQuery = queryForTable("event")
-    var time, date, desc, group, pplGoing : String
-    time = details.
-    */
-    
-    
+    @IBOutlet weak var lblLocation: UILabel!
     
     var event : AnyObject!
     
+    
+    var time : String = ""
+    var date : String = ""
+    var group : String = ""
+    var desc : String = ""
+    var pplGoing : String = ""
+    var location: String = ""
+
     override func viewDidLoad() {
-        
+        lblTime.text = "Time: " + time
+        lblDate.text = "Date: " + date
+        lblGroup.text = "Groups: " + group
+        lblLocation.text = "Location: " + location
+        txtDescription.text = "" + desc
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-    
 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
     
     //MARK: - Button operations
