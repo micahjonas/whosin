@@ -36,6 +36,15 @@ class EventTableViewController: PFQueryTableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("eventSegue", sender: self)
+    }
+    
+    /*override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        self.performSegueWithIdentifier("scheisser", sender: self)
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -75,12 +84,29 @@ class EventTableViewController: PFQueryTableViewController {
         }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println("fuck yeah")
-        if segue.identifier == "eventDetails" {
+        
+        if segue.identifier == "eventSegue" {
             
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let object = objects![indexPath.row] as! NSDictionary
+                println(indexPath.row)
+                let object = objects![indexPath.row] as! PFObject
+                println("fuck yeah")
                 
+                var index = indexPath.row
+                var event : AnyObject
+                if let eventObject = self.objects?[index]{
+                    event = eventObject as! AnyObject
+                } else {
+                    println("fts")
+                    event = ""
+                }
+                
+                println(event)
+                
+                //println(event)
+                
+                
+                //println(object)
                 
                 /*
                 var artist = object.objectForKey("name") as? String
@@ -88,6 +114,7 @@ class EventTableViewController: PFQueryTableViewController {
                 mobileUrl = mobileUrl?.stringByReplacingOccurrencesOfString("www.last.fm", withString: "m.last.fm")
                 */
                 (segue.destinationViewController as? DetailEventViewController)?.title = "Details"
+                (segue.destinationViewController as? DetailEventViewController)?.event = event
             }
         }
     }

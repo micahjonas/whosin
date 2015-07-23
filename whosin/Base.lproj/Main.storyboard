@@ -14,13 +14,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="U7R-JE-XxJ">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="hrf-NE-VCB" style="IBUITableViewCellStyleDefault" id="U7R-JE-XxJ">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U7R-JE-XxJ" id="28I-QT-AsN">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hrf-NE-VCB">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="HsL-Ug-aDw" kind="show" identifier="eventDetails" id="oHQ-OU-eYD"/>
+                                    <segue destination="HsL-Ug-aDw" kind="show" identifier="eventSegue" id="Qzu-tg-t6T"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -54,19 +62,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWi-wr-Ofk">
-                                <rect key="frame" x="16" y="521" width="43" height="30"/>
-                                <state key="normal" title="I'm In!">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRY-kx-ISc">
                                 <rect key="frame" x="486" y="521" width="98" height="30"/>
                                 <state key="normal" title="Who's Going?">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="SJN-wo-M7r" kind="show" id="tdA-kV-laJ"/>
+                                    <segue destination="SJN-wo-M7r" kind="show" id="Dmf-Nr-Vzg"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhA-cK-Vjk">
@@ -103,6 +105,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWi-wr-Ofk">
+                                <rect key="frame" x="16" y="521" width="43" height="30"/>
+                                <state key="normal" title="I'm In!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnImIn:" destination="HsL-Ug-aDw" eventType="touchUpInside" id="rUw-yR-fM5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -124,6 +135,13 @@
                             <constraint firstItem="rhA-cK-Vjk" firstAttribute="leading" secondItem="Ic2-Gb-IAf" secondAttribute="leadingMargin" id="vUL-aV-GdE"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lblDate" destination="pPI-W0-zMs" id="JaN-XT-AIg"/>
+                        <outlet property="lblGroup" destination="rhA-cK-Vjk" id="jEn-Rh-OaB"/>
+                        <outlet property="lblPplGoing" destination="QZZ-mW-pmh" id="WTs-Mt-Njp"/>
+                        <outlet property="lblTime" destination="oFM-tA-EER" id="QQL-ib-Q13"/>
+                        <outlet property="txtDescription" destination="eDj-JN-sCJ" id="5Cn-dB-o4E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oJj-cf-NF6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -802,7 +820,7 @@
         <image name="first" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oHQ-OU-eYD"/>
+        <segue reference="Qzu-tg-t6T"/>
         <segue reference="IHn-ke-Xmu"/>
         <segue reference="iiB-Uu-mLY"/>
     </inferredMetricsTieBreakers>
