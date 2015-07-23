@@ -38,6 +38,7 @@
 		1FBED0701B600A3300BED450 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBED06F1B600A3300BED450 /* CreateGroupViewController.swift */; };
 		1FBED0721B601CB800BED450 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBED0711B601CB800BED450 /* Location.swift */; };
 		1FBED0741B60948700BED450 /* GroupResultTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBED0731B60948700BED450 /* GroupResultTableView.swift */; };
+		1FBED0761B61171D00BED450 /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBED0751B61171D00BED450 /* ResultTableViewController.swift */; };
 		33DE45971B5FF07600EB51FD /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE45961B5FF07600EB51FD /* GroupTableViewController.swift */; };
 		33DE45991B5FF0C800EB51FD /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE45981B5FF0C800EB51FD /* GroupViewController.swift */; };
 		33F5C56E1B60733F0098F9A0 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F5C56D1B60733F0098F9A0 /* EventTableViewController.swift */; };
@@ -92,6 +93,7 @@
 		1FBED06F1B600A3300BED450 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		1FBED0711B601CB800BED450 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		1FBED0731B60948700BED450 /* GroupResultTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupResultTableView.swift; path = ../GroupResultTableView.swift; sourceTree = "<group>"; };
+		1FBED0751B61171D00BED450 /* ResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
 		33DE45961B5FF07600EB51FD /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
 		33DE45981B5FF0C800EB51FD /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		33F5C56D1B60733F0098F9A0 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTableViewController.swift; path = ../EventTableViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				1F41601D1B5EE63C00BB3E05 /* Supporting Files */,
 				1F41606C1B5EEB4500BB3E05 /* whosin-Bridging-Header.h */,
 				1F0A23A11B5F2C3300FF141C /* TabBarController.swift */,
+				1FBED0751B61171D00BED450 /* ResultTableViewController.swift */,
 			);
 			path = whosin;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				33DE45991B5FF0C800EB51FD /* GroupViewController.swift in Sources */,
 				33F5C5741B6085BD0098F9A0 /* DetailEventViewController.swift in Sources */,
 				33F5C56E1B60733F0098F9A0 /* EventTableViewController.swift in Sources */,
+				1FBED0761B61171D00BED450 /* ResultTableViewController.swift in Sources */,
 				1FBED0701B600A3300BED450 /* CreateGroupViewController.swift in Sources */,
 				1FBED0741B60948700BED450 /* GroupResultTableView.swift in Sources */,
 				1FBED0721B601CB800BED450 /* Location.swift in Sources */,
