@@ -108,6 +108,7 @@ class DetailEventViewController: UIViewController {
             pplJoined.removeAtIndex(find(pplJoined, user!)!)
         }
         event.saveInBackground()
+        user?.saveInBackground()
         
     }
     
