@@ -34,7 +34,7 @@ class CreateGroupViewController: UIViewController {
             locationField.hidden = true
             locationLabel.hidden = true*/
         } else {
-            keywordLabel.text = "Location"
+            keywordLabel.text = "location"
             
             
             /*keywordLabel.hidden = true

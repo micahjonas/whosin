@@ -44,6 +44,7 @@
 		33F5C56E1B60733F0098F9A0 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F5C56D1B60733F0098F9A0 /* EventTableViewController.swift */; };
 		33F5C5721B607BE30098F9A0 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F5C5711B607BE30098F9A0 /* CreateEventViewController.swift */; };
 		33F5C5741B6085BD0098F9A0 /* DetailEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F5C5731B6085BD0098F9A0 /* DetailEventViewController.swift */; };
+		33F5C5761B613BAB0098F9A0 /* MyEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F5C5751B613BAB0098F9A0 /* MyEventsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		33F5C56D1B60733F0098F9A0 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTableViewController.swift; path = ../EventTableViewController.swift; sourceTree = "<group>"; };
 		33F5C5711B607BE30098F9A0 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		33F5C5731B6085BD0098F9A0 /* DetailEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailEventViewController.swift; sourceTree = "<group>"; };
+		33F5C5751B613BAB0098F9A0 /* MyEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				1F4160211B5EE63C00BB3E05 /* FirstViewController.swift */,
 				1F4160231B5EE63C00BB3E05 /* SecondViewController.swift */,
 				1F4160251B5EE63C00BB3E05 /* Main.storyboard */,
+				33F5C5751B613BAB0098F9A0 /* MyEventsTableViewController.swift */,
 				33F5C5731B6085BD0098F9A0 /* DetailEventViewController.swift */,
 				1FBED06F1B600A3300BED450 /* CreateGroupViewController.swift */,
 				33F5C5711B607BE30098F9A0 /* CreateEventViewController.swift */,
@@ -341,6 +344,7 @@
 				1FBED0761B61171D00BED450 /* ResultTableViewController.swift in Sources */,
 				1FBED0701B600A3300BED450 /* CreateGroupViewController.swift in Sources */,
 				1FBED0741B60948700BED450 /* GroupResultTableView.swift in Sources */,
+				33F5C5761B613BAB0098F9A0 /* MyEventsTableViewController.swift in Sources */,
 				1FBED0721B601CB800BED450 /* Location.swift in Sources */,
 				1F4160241B5EE63C00BB3E05 /* SecondViewController.swift in Sources */,
 				33F5C5721B607BE30098F9A0 /* CreateEventViewController.swift in Sources */,
