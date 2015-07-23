@@ -8,14 +8,59 @@
 
 import UIKit
 import Parse
+import ParseUI
 
 
-class CreateEventViewController: UIViewController {
+class CreateEventViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    var pickerArray = ["test", "bla", "hit"]
+    
+    var groupsOfUser : [PFObject] = []
+    var selectedGroup : PFObject = PFObject(className: "group")
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let relation = PFUser.currentUser()?.relationForKey("groups")
+        let query = relation?.query()
+        query?.findObjectsInBackgroundWithBlock{(objects: [AnyObject]?, error: NSError?) in
+            
+            self.groupsOfUser = objects as! [PFObject]
+            
+        }
+
+        
+        var picker = UIPickerView()
+        picker.delegate = self
+        txtGroups.inputView = picker
+        
+        picker.dataSource = self
+        
 
         // Do any additional setup after loading the view.
+    }
+    
+    func numberOfComponentsInPickerView(colorPicker: UIPickerView!) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView!, titleForRow row: Int, forComponent component: Int) -> String!
+    {
+        var object = groupsOfUser[row] as PFObject
+        
+        return object.objectForKey("name") as! String
+    }
+    
+    func pickerView(pickerView: UIPickerView!, numberOfRowsInComponent component: Int) -> Int {
+        return groupsOfUser.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedGroup = groupsOfUser[row] as PFObject
+        
+        txtGroups.text = selectedGroup.objectForKey("name") as! String
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,18 +83,17 @@ class CreateEventViewController: UIViewController {
         event["date"] = txtDate.text
         event["time"] = txtTime.text
         event["location"] = txtLocation.text
-        event["groups"] = txtGroups.text
         event["description"] = txtDescription.text
+        event["creator"] = PFUser.currentUser()?.objectId
         
         event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             println("Object has been saved")
             
-            let relation = PFUser.currentUser()?.relationForKey("groups")
             
-            relation?.addObject(event)
             
-            PFUser.currentUser()?.saveInBackground()
-            
+            let relation = self.selectedGroup.relationForKey("eventsOfGroup")
+            relation.addObject(event)
+            self.selectedGroup.saveInBackground()
             self.navigationController?.popViewControllerAnimated(true)
         }
         
