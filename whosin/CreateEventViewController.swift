@@ -10,12 +10,39 @@ import UIKit
 import Parse
 
 
-class CreateEventViewController: UIViewController {
+class CreateEventViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    var pickerArray = ["test", "bla", "hit"]
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var picker = UIPickerView()
+        picker.delegate = self
+        txtGroups.inputView = picker
+        
+        picker.dataSource = self
+        
 
         // Do any additional setup after loading the view.
+    }
+    
+    func numberOfComponentsInPickerView(colorPicker: UIPickerView!) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView!, titleForRow row: Int, forComponent component: Int) -> String!
+    {
+        return pickerArray[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView!, numberOfRowsInComponent component: Int) -> Int {
+        return pickerArray.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        txtGroups.text = pickerArray[row]
     }
 
     override func didReceiveMemoryWarning() {
