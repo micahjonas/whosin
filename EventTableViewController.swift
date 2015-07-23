@@ -52,6 +52,8 @@ class EventTableViewController: PFQueryTableViewController {
     }
         
         override func queryForTable() -> PFQuery {
+            
+            
             //var userId : String = PFUser.currentUser()!.objectId!
             
             
@@ -103,6 +105,7 @@ class EventTableViewController: PFQueryTableViewController {
                 (segue.destinationViewController as? DetailEventViewController)?.group = (event.objectForKey("group") as! String)
                 (segue.destinationViewController as? DetailEventViewController)?.desc = (event.objectForKey("description") as! String)
                 (segue.destinationViewController as? DetailEventViewController)?.location = (event.objectForKey("location") as! String)
+                  (segue.destinationViewController as? DetailEventViewController)?.event = event
 
 
             }

@@ -19,8 +19,8 @@ class DetailEventViewController: UIViewController {
     @IBOutlet weak var txtDescription: UITextView!
     @IBOutlet weak var lblPplGoing: UILabel!
     @IBOutlet weak var lblLocation: UILabel!
-    
-    var event : AnyObject!
+    @IBOutlet weak var btnImIn: UIButton!
+
     
     
     var time : String = ""
@@ -29,6 +29,11 @@ class DetailEventViewController: UIViewController {
     var desc : String = ""
     var pplGoing : String = ""
     var location: String = ""
+    var event : PFObject = PFObject(className: "event")
+    var name : String = ""
+    var pplJoined : [PFObject] = []
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +51,6 @@ class DetailEventViewController: UIViewController {
                 self.lblGroup.text = "Group: \(temp)"
         
         }
-
-
         // Do any additional setup after loading the view.
     }
 
@@ -55,6 +58,25 @@ class DetailEventViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        let relation = event.relationForKey("usersJoining")
+        let query = relation.query()
+        query!.findObjectsInBackgroundWithBlock({(objects : [AnyObject]?, error: NSError?) in
+            self.pplJoined = objects as! [PFObject]
+            if contains(self.pplJoined, PFUser.currentUser()!){
+                self.btnImIn.setTitle("I'm In!", forState: UIControlState())
+            }
+            else{
+                self.btnImIn.setTitle("I'm Out!", forState: UIControlState())
+            }
+        })
+        
+
+      
     }
 
     
@@ -64,6 +86,26 @@ class DetailEventViewController: UIViewController {
     @IBAction func btnImIn(sender: AnyObject) {
         
         
+        
+        
+        println(event)
+        //let relation = PFUser.currentUser()?.relationForKey("eventsJoined")
+        let relation = event.relationForKey("usersJoining")
+        let user = PFUser.currentUser()
+        
+        if !contains(pplJoined, PFUser.currentUser()!){
+            println("if")
+            relation.addObject(user!)
+            btnImIn.setTitle("I'm In!", forState: UIControlState())
+            pplJoined.append(user!)
+        }
+        else if contains(pplJoined, PFUser.currentUser()!){
+            println("else")
+            btnImIn.setTitle("I'm Out!", forState: UIControlState())
+            relation.removeObject(user!)
+            pplJoined.removeAtIndex(find(pplJoined, user!)!)
+        }
+        event.saveInBackground()
         
     }
     
