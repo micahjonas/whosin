@@ -82,7 +82,7 @@ class CreateGroupViewController: UIViewController {
         } else  {
             
             
-            var inputLocation = locationField.text
+            var inputLocation = keywordInput.text
             
             geocodeAddress(inputLocation, withCompletionHandler: { (status, success) -> Void in
                 if !success {
