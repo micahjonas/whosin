@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import ParseUI
 
-class EventTableViewController: UITableViewController {
+class EventTableViewController: UITableViewController , PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate{
     
     var events = [PFObject]()
     var eventsJoined : [PFObject] = []
@@ -24,6 +24,29 @@ class EventTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if PFUser.currentUser() == nil {
+            var loginCtrl = PFLogInViewController()
+            loginCtrl.fields = PFLogInFields.Facebook
+            //loginCtrl.facebookPermissions = ["public_profile", "email", "user_friends"]
+            //loginCtrl.facebookPermissions = ["friends_about_me"]
+            loginCtrl.delegate = self
+            
+            var logInLogoTitle = UILabel()
+            logInLogoTitle.text = "Who's in"
+            
+            loginCtrl.logInView!.logo = logInLogoTitle
+            
+            var signupCtrl = PFSignUpViewController()
+            signupCtrl.delegate = self
+            loginCtrl.signUpController = signupCtrl
+            
+            
+            
+            self.presentViewController(loginCtrl, animated: true, completion: nil)
+            
+        } else {
+
+
         var userId : String = PFUser.currentUser()!.objectId!
         let relation = PFUser.currentUser()?.relationForKey("groups")
         let query = relation?.query()
@@ -53,22 +76,18 @@ class EventTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 }
             }
-            
-            
-            
+ 
         }
-
-        
-        
-        
-        
-        
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
 
+        if PFUser.currentUser() != nil {
+        
+        
+        self.refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         
         let relation = PFUser.currentUser()?.relationForKey("eventsJoined")
         let query = relation?.query()
@@ -81,8 +100,16 @@ class EventTableViewController: UITableViewController {
             
             self.tableView.reloadData()
         })
+        }
     }
     
+    func refresh(sender:AnyObject)
+    {
+        // Updating your data here...
+        
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
