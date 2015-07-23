@@ -134,9 +134,9 @@ class EventTableViewController: UITableViewController , PFLogInViewControllerDel
         cell.textLabel!.text = txt
 
         if contains(eventsJoined, event) {
-            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-        } else {
             cell.accessoryType = UITableViewCellAccessoryType.None
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
         
         return cell

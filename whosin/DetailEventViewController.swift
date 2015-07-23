@@ -69,7 +69,7 @@ class DetailEventViewController: UIViewController {
         let query = relation.query()
         query!.findObjectsInBackgroundWithBlock({(objects : [AnyObject]?, error: NSError?) in
             self.pplJoined = objects as! [PFObject]
-            if !contains(self.pplJoined, PFUser.currentUser()!){
+            if contains(self.pplJoined, PFUser.currentUser()!){
                 self.btnImIn.setTitle("I'm In!", forState: UIControlState())
             }
             else{
@@ -95,14 +95,14 @@ class DetailEventViewController: UIViewController {
         let relation = event.relationForKey("usersJoining")
         let user = PFUser.currentUser()
         
-        if contains(pplJoined, PFUser.currentUser()!){
+        if !contains(pplJoined, PFUser.currentUser()!){
             println("if")
             relation.addObject(user!)
             relation2?.addObject(event)
             btnImIn.setTitle("I'm In!", forState: UIControlState())
             pplJoined.append(user!)
         }
-        else /*if contains(pplJoined, PFUser.currentUser()!)*/{
+        else if contains(pplJoined, PFUser.currentUser()!){
             println("else")
             btnImIn.setTitle("I'm Out!", forState: UIControlState())
             relation.removeObject(user!)
