@@ -72,42 +72,26 @@ class MyEventsTableViewController: PFQueryTableViewController {
         if segue.identifier == "eventSegue" {
             
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                println(indexPath.row)
-                let object = objects![indexPath.row] as! PFObject
                 
-                
-                var index = indexPath.row
-                var event : PFObject = self.objects?[index] as! PFObject
-                println("fuck yeah")
-                println(event)
-                
-                /*
-                var passDestination = segue.destinationViewController as! DetailEventViewController;
-                
-                passDestination.date = event.stringForKey("date")
-                passDestination.group = event.stringForKey("groups")
-                passDestination.desc = event.stringForKey("description")
-                passDestination.location = event.stringForKey("location")
-                */
-                //println(event)
-                
-                
-                //println(object)
-                
-                /*
-                var artist = object.objectForKey("name") as? String
-                var mobileUrl = object.objectForKey("url") as? String
-                mobileUrl = mobileUrl?.stringByReplacingOccurrencesOfString("www.last.fm", withString: "m.last.fm")
-                */
-                /*(segue.destinationViewController as? DetailEventViewController)?.title = "Details"
-                (segue.destinationViewController as? DetailEventViewController)?.time = event.objectForKey("time") as! String
-                (segue.destinationViewController as? DetailEventViewController)?.date = (event.objectForKey("date") as! String)
-                (segue.destinationViewController as? DetailEventViewController)?.group = (event.objectForKey("groups") as! String)
-                (segue.destinationViewController as? DetailEventViewController)?.desc = (event.objectForKey("description") as! String)
-                (segue.destinationViewController as? DetailEventViewController)?.location = (event.objectForKey("location") as! String)*/
-                
-                
+                if let indexPath = self.tableView.indexPathForSelectedRow() {
+                    let object = objects![indexPath.row] as! PFObject
+                    
+                    
+                    var index = indexPath.row
+                    var event : PFObject = self.objects?[index] as! PFObject
+                    
+                    
+                    (segue.destinationViewController as? DetailEventViewController)?.title = "Details"
+                    (segue.destinationViewController as? DetailEventViewController)?.time = event.objectForKey("time") as! String
+                    (segue.destinationViewController as? DetailEventViewController)?.date = (event.objectForKey("date") as! String)
+                    (segue.destinationViewController as? DetailEventViewController)?.group = (event.objectForKey("group") as! String)
+                    (segue.destinationViewController as? DetailEventViewController)?.desc = (event.objectForKey("description") as! String)
+                    (segue.destinationViewController as? DetailEventViewController)?.location = (event.objectForKey("location") as! String)
+                    
+                    
+                }
             }
+
         }
     }
 
@@ -133,17 +117,17 @@ class MyEventsTableViewController: PFQueryTableViewController {
     }
     */
 
-    /*
+
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+          self.removeObjectAtIndexPath(indexPath)
+            
+        
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
     /*
     // Override to support rearranging the table view.
