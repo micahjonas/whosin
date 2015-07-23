@@ -85,6 +85,7 @@ class CreateEventViewController: UIViewController, UIPickerViewDataSource, UIPic
         event["location"] = txtLocation.text
         event["description"] = txtDescription.text
         event["creator"] = PFUser.currentUser()?.objectId
+        event["group"] = selectedGroup.objectId
         
         event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             println("Object has been saved")
