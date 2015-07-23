@@ -49,7 +49,7 @@ class GroupViewController: UIViewController {
     @IBAction func search(sender: AnyObject) {
         if(privateSwitch.on){
             let query = PFQuery(className: "group")
-            query.whereKey("searchname", containsString: .text)
+            //query.whereKey("searchname", containsString: .text)
             query.whereKey("keyword", equalTo: passwortField.text)
             
             println(query.findObjects())

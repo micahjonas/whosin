@@ -39,6 +39,9 @@
 		1FBED0721B601CB800BED450 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBED0711B601CB800BED450 /* Location.swift */; };
 		33DE45971B5FF07600EB51FD /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE45961B5FF07600EB51FD /* GroupTableViewController.swift */; };
 		33DE45991B5FF0C800EB51FD /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE45981B5FF0C800EB51FD /* GroupViewController.swift */; };
+		33F5C56E1B60733F0098F9A0 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F5C56D1B60733F0098F9A0 /* EventTableViewController.swift */; };
+		33F5C5721B607BE30098F9A0 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F5C5711B607BE30098F9A0 /* CreateEventViewController.swift */; };
+		33F5C5741B6085BD0098F9A0 /* DetailEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F5C5731B6085BD0098F9A0 /* DetailEventViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +92,9 @@
 		1FBED0711B601CB800BED450 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		33DE45961B5FF07600EB51FD /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
 		33DE45981B5FF0C800EB51FD /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		33F5C56D1B60733F0098F9A0 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTableViewController.swift; path = ../EventTableViewController.swift; sourceTree = "<group>"; };
+		33F5C5711B607BE30098F9A0 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
+		33F5C5731B6085BD0098F9A0 /* DetailEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailEventViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,11 +158,14 @@
 			children = (
 				1F4160411B5EE73200BB3E05 /* frameworks */,
 				1F41601F1B5EE63C00BB3E05 /* AppDelegate.swift */,
+				33F5C56D1B60733F0098F9A0 /* EventTableViewController.swift */,
 				1FBED0711B601CB800BED450 /* Location.swift */,
 				1F4160211B5EE63C00BB3E05 /* FirstViewController.swift */,
 				1F4160231B5EE63C00BB3E05 /* SecondViewController.swift */,
 				1F4160251B5EE63C00BB3E05 /* Main.storyboard */,
+				33F5C5731B6085BD0098F9A0 /* DetailEventViewController.swift */,
 				1FBED06F1B600A3300BED450 /* CreateGroupViewController.swift */,
+				33F5C5711B607BE30098F9A0 /* CreateEventViewController.swift */,
 				33DE45981B5FF0C800EB51FD /* GroupViewController.swift */,
 				33DE45961B5FF07600EB51FD /* GroupTableViewController.swift */,
 				1F4160281B5EE63D00BB3E05 /* Images.xcassets */,
@@ -321,9 +330,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				33DE45991B5FF0C800EB51FD /* GroupViewController.swift in Sources */,
+				33F5C5741B6085BD0098F9A0 /* DetailEventViewController.swift in Sources */,
+				33F5C56E1B60733F0098F9A0 /* EventTableViewController.swift in Sources */,
 				1FBED0701B600A3300BED450 /* CreateGroupViewController.swift in Sources */,
 				1FBED0721B601CB800BED450 /* Location.swift in Sources */,
 				1F4160241B5EE63C00BB3E05 /* SecondViewController.swift in Sources */,
+				33F5C5721B607BE30098F9A0 /* CreateEventViewController.swift in Sources */,
 				33DE45971B5FF07600EB51FD /* GroupTableViewController.swift in Sources */,
 				1F4160201B5EE63C00BB3E05 /* AppDelegate.swift in Sources */,
 				1F0A23A21B5F2C3300FF141C /* TabBarController.swift in Sources */,
