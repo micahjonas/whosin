@@ -12,6 +12,8 @@ import ParseUI
 
 class GroupViewController: UIViewController {
     
+    var results = [PFObject]()
+    
     let baseURLGeocode = "https://maps.googleapis.com/maps/api/geocode/json?"
     
     var lookupAddressResults: Dictionary<NSObject, AnyObject>!
@@ -64,20 +66,22 @@ class GroupViewController: UIViewController {
             query.whereKey("keyword", equalTo: passwortField.text)
             
             query.findObjectsInBackgroundWithBlock{(objects: [AnyObject]?, error: NSError?) in
-                    println(objects)
-                
+                self.results = []
+                for object in objects! {
+                    
+                    self.results.append(object as! PFObject)
+                    
+                }
+                self.performSegueWithIdentifier("resultList", sender: self)
             }
+
+            
         } else {
-            
-            
             let query = PFQuery(className: "group")
             if nameField.text != nil || nameField != "" {
                 query.whereKey("searchname", containsString: nameField.text)
                 println(nameField.text)
             }
-            
-            
-        
             
             if passwortField.text != nil {
             
@@ -99,19 +103,14 @@ class GroupViewController: UIViewController {
                         query.whereKey("lng", lessThan: lng.1)
                         query.findObjectsInBackgroundWithBlock{(objects: [AnyObject]?, error: NSError?) in
                             
-                            var results : [String] = []
+                            self.results = []
                             for object in objects! {
                                 
-                                var tempOb = (object as! PFObject)
-                                results.append(tempOb["name"] as! String)
+                                self.results.append(object as! PFObject)
 
                             }
-                            println(results)
                             
-                            var bla = GroupResultTableView()
-                            bla.hack(results)
-                            self.resultTable.dataSource = GroupResultTableView()
-                            
+                            self.performSegueWithIdentifier("resultList", sender: self)
                         }
                         
                     }
@@ -119,12 +118,30 @@ class GroupViewController: UIViewController {
             } else {
             
                 query.findObjectsInBackgroundWithBlock{(objects: [AnyObject]?, error: NSError?) in
+                    
+                    
                     println(objects)
+                    self.performSegueWithIdentifier("resultList", sender: self)
+
                     
                 }
             }
         }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "resultList" {
+            
+            
+            (segue.destinationViewController as? ResultTableViewController)?.title = "Results"
+            (segue.destinationViewController as? ResultTableViewController)?.results = results
+        }
+    }
+
+
+
+            
     
     func calcMinMaxLat(lat:Double) ->(Double, Double) {
         var min = lat - 0.2
