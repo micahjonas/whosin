@@ -87,6 +87,8 @@ class MyEventsTableViewController: PFQueryTableViewController {
                     (segue.destinationViewController as? DetailEventViewController)?.group = (event.objectForKey("group") as! String)
                     (segue.destinationViewController as? DetailEventViewController)?.desc = (event.objectForKey("description") as! String)
                     (segue.destinationViewController as? DetailEventViewController)?.location = (event.objectForKey("location") as! String)
+                    (segue.destinationViewController as? DetailEventViewController)?.event = event
+                    
                     
                     
                 }
@@ -94,6 +96,13 @@ class MyEventsTableViewController: PFQueryTableViewController {
 
         }
     }
+    
+    
+    
+    
+    //MARK: - Button operations
+    
+    
 
 
     // MARK: - Table view data source
