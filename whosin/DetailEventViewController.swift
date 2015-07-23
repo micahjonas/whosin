@@ -31,12 +31,23 @@ class DetailEventViewController: UIViewController {
     var location: String = ""
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         lblTime.text = "Time: " + time
         lblDate.text = "Date: " + date
-        lblGroup.text = "Groups: " + group
+        
         lblLocation.text = "Location: " + location
         txtDescription.text = "" + desc
-        super.viewDidLoad()
+        
+        let query = PFQuery(className: "group")
+        query.whereKey("objectId", equalTo: group)
+        query.findObjectsInBackgroundWithBlock{
+            (objects: [AnyObject]?, error: NSError?) in
+                var temp = objects?.first!.objectForKey("name") as! String
+                self.lblGroup.text = "Group: \(temp)"
+        
+        }
+
+
         // Do any additional setup after loading the view.
     }
 
