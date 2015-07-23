@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import ParseUI
 
 
 class CreateEventViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
@@ -67,6 +68,7 @@ class CreateEventViewController: UIViewController, UIPickerViewDataSource, UIPic
         event["location"] = txtLocation.text
         event["groups"] = txtGroups.text
         event["description"] = txtDescription.text
+        event["creator"] = PFUser.currentUser()?.objectId
         
         event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             println("Object has been saved")
