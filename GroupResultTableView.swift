@@ -24,15 +24,6 @@ class GroupResultTableView: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        println("fukcer")
-        println(objects)
-    }
-    
-    func hack (arr: [String]){
-        self.objects = arr
-        self.tableView.reloadData()
-    
     }
     
     
