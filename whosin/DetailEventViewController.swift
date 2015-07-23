@@ -89,13 +89,14 @@ class DetailEventViewController: UIViewController {
         
         
         println(event)
-        //let relation = PFUser.currentUser()?.relationForKey("eventsJoined")
+        let relation2 = PFUser.currentUser()?.relationForKey("eventsJoined")
         let relation = event.relationForKey("usersJoining")
         let user = PFUser.currentUser()
         
         if !contains(pplJoined, PFUser.currentUser()!){
             println("if")
             relation.addObject(user!)
+            relation2?.addObject(event)
             btnImIn.setTitle("I'm In!", forState: UIControlState())
             pplJoined.append(user!)
         }
@@ -103,6 +104,7 @@ class DetailEventViewController: UIViewController {
             println("else")
             btnImIn.setTitle("I'm Out!", forState: UIControlState())
             relation.removeObject(user!)
+            relation2?.removeObject(event)
             pplJoined.removeAtIndex(find(pplJoined, user!)!)
         }
         event.saveInBackground()
