@@ -50,34 +50,12 @@ class MyEventsTableViewController: PFQueryTableViewController {
     
     
     override func queryForTable() -> PFQuery {
-        //var userId : String = PFUser.currentUser()!.objectId!
         
-        
-        //let relation = PFUser.currentUser()?.relationForKey("groups")
-        //let query = relation?.query()
-        
-        /*
-        query.whereKey("userId", equalTo: userId)
-        query.findObjectsInBackgroundWithBlock {
-        (objects: [AnyObject]?, error: NSError?) -> Void in
-        var groups : [String]
-        if error == nil {
-        // The find succeeded.
-        println("Successfully retrieved \(objects!.count) scores.")
-        // Do something with the found objects
-        if let objects = objects as? [PFObject] {
-        for object in objects {
-        
-        }
-        }
-        } else {
-        // Log details of the failure
-        println("Error: \(error!) \(error!.userInfo!)")
-        }
-        }
-        
-        */
         let query = PFQuery(className: "event")
+        var userId = PFUser.currentUser()?.objectId
+        println(userId)
+        
+        query.whereKey("creator", equalTo: userId!)
         return query
     }
     
