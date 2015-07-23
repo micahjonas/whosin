@@ -38,7 +38,6 @@ class EventTableViewController: UITableViewController {
             for group in groups {
                 var id = group.objectId as String?
                 let query = PFQuery(className: "event")
-                println(id)
                 query.whereKey("group", equalTo: id!)
 
                 queryArray.append(query)
@@ -51,7 +50,6 @@ class EventTableViewController: UITableViewController {
                 if error == nil {
                     // results contains players with lots of wins or only a few wins.
                     self.events = results as! [PFObject]
-                    println(self.events)
                     self.tableView.reloadData()
                 }
             }
@@ -69,6 +67,20 @@ class EventTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+
+        
+        let relation = PFUser.currentUser()?.relationForKey("eventsJoined")
+        let query = relation?.query()
+        query!.findObjectsInBackgroundWithBlock({(objects: [AnyObject]?, error: NSError?) in
+            self.eventsJoined = objects as! [PFObject]
+            
+            println("eventJoined")
+            println(objects)
+            println(self.eventsJoined)
+            
+            self.tableView.reloadData()
+        })
     }
     
     
@@ -93,32 +105,12 @@ class EventTableViewController: UITableViewController {
         let event = events[indexPath.row]
         var txt = event.objectForKey("name") as! String
         cell.textLabel!.text = txt
-        
-    /*
-        let relation = event.relationForKey("usersJoining")
-        let query = relation.query()
-        let userId = PFUser.currentUser()?.objectId
-        query!.whereKey("objectId", equalTo: userId!)
-        query!.findObjectsInBackgroundWithBlock {
-            (results: [AnyObject]?, error: NSError?) -> Void in
-            if error == nil {
-                
-                
-                
-            }
-        }
 
-        
-        */
-        
-        
-        
-        /*
-        let query = Qu
-        let userId = PFUser.currentUser()?.objectId
-        event.whereKey("objectId", equalTo: userId!)
-        
-        */
+        if contains(eventsJoined, event) {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.None
+        }
         
         return cell
     }
