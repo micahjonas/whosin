@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import ParseUI
 
 class GroupViewController: UIViewController {
 
@@ -14,6 +16,16 @@ class GroupViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if privateSwitch.on {
+            passwordLabel.text = "keyword"
+        } else {
+            passwordLabel.text = "location"
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,11 +41,31 @@ class GroupViewController: UIViewController {
 
     @IBAction func clickPrivate(sender: UIButton) {
         if privateSwitch.on {
-            println("private")
+            passwordLabel.text = "keyword"
         } else {
-            println("public")
+            passwordLabel.text = "location"
         }
     }
+    @IBAction func search(sender: AnyObject) {
+        if(privateSwitch.on){
+            let query = PFQuery(className: "group")
+            query.whereKey("searchname", containsString: .text)
+            query.whereKey("keyword", equalTo: passwortField.text)
+            
+            println(query.findObjects())
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+    @IBOutlet weak var resultTable: UITableView!
     /*
     // MARK: - Navigation
 

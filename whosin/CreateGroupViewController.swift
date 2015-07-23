@@ -56,6 +56,7 @@ class CreateGroupViewController: UIViewController {
     @IBAction func save(sender: UIButton) {
         let group = PFObject(className: "group")
         group["name"] = nameField.text
+        group["searchname"] = nameField.text.lowercaseString
         group["description"] = descriptionTextfield.text
         
         if privateSwitch.on {
@@ -70,14 +71,6 @@ class CreateGroupViewController: UIViewController {
                 relation?.addObject(group)
                 
                 PFUser.currentUser()?.saveInBackground()
-                
-                /*
-                let groupUser = PFObject(className: "group_user")
-                groupUser["groupId"] = group.objectId
-                groupUser["userId"] = PFUser.currentUser()?.objectId
-                groupUser.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-                    println("fuck yes")
-                }*/
                 
             }
 
@@ -108,21 +101,6 @@ class CreateGroupViewController: UIViewController {
 
                         PFUser.currentUser()?.saveInBackground()
 
-                        
-                        
-                        /*
-                        // Fake relation
-                        let groupUser = PFObject(className: "group_user")
-                        groupUser["groupId"] = group.objectId
-                        groupUser["userId"] = PFUser.currentUser()?.objectId
-                        
-                        
-                        
-                        groupUser.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-                            println("fuck yes")
-
-                        }
-                        */
                     }
                 }
             })
