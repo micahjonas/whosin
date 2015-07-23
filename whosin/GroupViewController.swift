@@ -98,8 +98,19 @@ class GroupViewController: UIViewController {
                         query.whereKey("lng", greaterThan: lng.0)
                         query.whereKey("lng", lessThan: lng.1)
                         query.findObjectsInBackgroundWithBlock{(objects: [AnyObject]?, error: NSError?) in
+                            
+                            var results : [String] = []
+                            for object in objects! {
+                                
+                                var tempOb = (object as! PFObject)
+                                results.append(tempOb["name"] as! String)
 
-                            println(objects)
+                            }
+                            println(results)
+                            
+                            var bla = GroupResultTableView()
+                            bla.hack(results)
+                            self.resultTable.dataSource = GroupResultTableView()
                             
                         }
                         
